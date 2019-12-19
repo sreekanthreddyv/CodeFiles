@@ -1,0 +1,166 @@
+# I care about when the work is done. Looking at an empty box doesn't tell me that. You and 5 other guys might still be working on stuff you took out of the box
+
+# Priority Queue -> (priority_number, data)
+
+# The 'join()' function on our 'queue' objects allow us to block our current thread's execution until such point that all elements from the queue have been consumed.
+
+/* timeit */
+# "timeit" module which provides an excellent way to measure the performance of small bits of Python code within your main application.
+
+# "repeat" to determine how many times we want to time our code
+# "number" to determine how many times we want to run these tests.
+
+/* profiling */
+$ cProfile
+
+# When we talk about profiling our code, what we intend to do is measure some key attributes about our programs, such as how much memory they use, the time complexity of our programs, or the usage of particular instructions.
+
+    $ ncalls: This is the number of times a line/function is called throughout the execution of our program.
+    $ tottime: This is the total time that the line or function took to execute.
+    $ percall: This is the total time divided by the number of calls.
+    $ cumtime: This is the cumulative time spent executing this line or function.
+    $ percall: This is the quotient of cumtime divided by the number of primitive calls.
+    $ flename:lineno(function): This represents the actual line or function that we are measuring.
+
+$ python -m cProfile <filename>.py
+
+# The "line_profiler" is one such tool that allows us to do line-by-line analysis of how long our programs take to execute.
+$ pip install line_profiler
+
+	@profile
+	def test_fun():
+		steps to execute
+
+	$ kernprof -l test_script.py
+	# Wrote profile results to test_script.py.lprof
+	$ python3.6 -m line_profiler test_script.py.lprof
+
+	$ python3.6 -m memory_profiler test_script.py
+	$ python3.6 C:\Python27\Lib\site-packages\mprof.py run test_script.py
+	$ python3.6 C:\Python27\Lib\site-packages\mprof.py plot
+
+
+/* Executors and Pools */
+
+	$ from concurrent.futures import ThreadPoolExecutor
+	$ with ThreadPoolExecutor(max_workers=4) as executor:
+	$ op = executor.map(hacker, lst)
+	$ tst = executor.submit(one).result(timeout=2)
+	$ tst = executor.submit(one).add_done_callback_method(fn)
+	$ futureObj.running()  # true or false
+	$ futureObj.cancel()  # true or false
+
+
+/* Multiprocessing */
+
+# The Global Interpreter Lock (GIL) can be a truly performance-hindering mechanism at times for our CPU bound tasks.
+
+# Forking is the mechanism used on UNIX systems in order to create child processes from the parent process.  Child process inherit all of the resources available to the parent.
+
+	$ myProcess.daemon = True
+	$ myProcess.terminate()
+	$ myProcess.current_process().pid <.name>
+
+	<< ThreadPoolExecutor and ProcessPoolExecutor >> from concurrent.futures
+
+# ".apply()" function blocks until the result is ready. so it's not exactly ideal for doing work in parallel. If you wanted to perform work in parallel, then you should really be using the ".apply()" sister function, "apply_async"
+
+	$ multiprocessing.Pool as p
+		$ res = p.map(task, lst)
+		$ res = p.map.async(task, lst).get()
+		$ for it in p.imap(task, lst); print(it)
+		$ for it in p.imap_unordered(task, lst); print(it)
+
+# The "starmap" are awesome in the sense that they allow us to submit a list of tuples to a pool instead of your standard single variables
+
+	$ p.starmap(task, [(x,y), [a, b)]
+	$ p.starmap_async(task, [(x,y), [a, b)]).get()
+	$ p.starmap_async(processes=1, maxtasksperchild=2)
+
+/* Communication between processes */
+
+	- Queues :
+	- Pipes : anonymous pipes and named pipes.
+	- Manager : These provide a way for us to create data, and subsequently, share this data between different processes within our Python applications
+	- Ctypes : These are objects that utilize a shared memory which can subsequently be accessed by child processes.
+
+	Anonymous pipes ara a simplex FIFO communication method used within operating systems for inter-process communication.
+	Simplex -> That only one direction transmits at one time.
+	Duplex -> Two way pipes
+	Named Pipes -> Anonymous pipes only last as long as the process lasts.
+
+	manager = mp.Manager()
+		ns = manager.Namespace()    ns.x = 1
+		sharedQ = manager.Queue()
+
+	# from multiprocessing.connection import Listener, Client
+
+# logging.basicConfig(filename='myapp.log', level=logging.INFO, format=f'{processname}')
+
+# Communicating Sequential Process -> pycsp
+
+	from pycsp.parallel import *
+	@process
+	def proess_1(n):
+		print("Executng process-1")
+		sleep(n)
+	Parallel(proess_1(3), process_2(2))
+
+/* Event Driven Programming */
+ 	Asyncio
+ 		The Event loop
+ 		Futures
+ 		Coroutines
+ 		Tasks
+ 		Transports
+ 		Protocols
+
+
+ 	@asyncio.coroutine
+ 	async def main()
+ 	loop = asyncio.get_event_loop()
+ 	asyncio.async(main())
+ 	loop.run_until_complete(main())
+ 	loop.run_forever()
+	loop.is_closed()
+	loop.close()
+	current = asyncio.Task.current_task()
+	pending = asyncio.Task.all_tasks()
+	task3 = loop.create_task(mycor())
+	task3.cancel()
+	task = asyncio.ensure_future(myCoro())
+	lock = asyncio.Lock()
+	await asyncio.wait([mycoro(lock), mycoro(lock)])
+	asyncio.Semaphore(value=4, *, loop=None)
+	asyncio.BoundedSemaphore(value=4, *, loop=None)
+	loop.set_debug(True)
+
+** Twisted, Gevent,
+
+/* GPU */
+
+    - PyCUDA
+    - PyOpenCL
+    - Numba
+    - Theano
+
+    - Data Science
+        * Machine Learning
+        * Classification
+        * Cluster Analysis -> Cluster analysis is the act of grouping sets of data into a set of clusters
+        * Data mining
+
+    - Data mining is the process of trying to extract useful information from massive sets of data.
+	- It typically follows a five-step process:
+		1. Identifying the data you wish to examine.
+		2. Preprocessing this information.
+		3. Transforming this data.
+		4. Mining the data.
+		5. Interpreting and reporting the results.
+
+
+
+
+
+
+
