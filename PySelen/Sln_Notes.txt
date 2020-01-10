@@ -1,0 +1,91 @@
+# The InternetExplorerDriver server acts as an intermediary between the Selenium script and the browser.
+
+# Selenium WebDriver is a browser automation API. It provides features to automate browser interaction, and this API is mainly used to test web applications
+
+# The msg object is a message explaining the failure (if any).
+
+$ assertEqual(a, b [,msg]) # NotEqual
+
+$ assertTrue(x[,msg])) # False
+
+$ assertRaises(exc, fun, *args, **kwds) # fun(*args, **kwds) raises exc
+
+$ unittest.TestLoader().loadTestsFromTestCase(SearchTest)
+
+$ smoke_tests = unittest.TestSuite([home_page_tests, search_tests])
+
+$ unittest.TextTestRunner(verbosity=2).run(smoke_tests)
+
+$
+
+By ID       --> find_element_by_id
+
+By NAME     --> find_element_by_name
+
+By XPath    --> find_element_by_xpath
+
+By Class    --> find_element_by_class_name
+
+By TAGNAME  --> find_element_by_tag_name
+
+By CSS Selector > find_element_by_class_name
+
+$ tagName[attributename=attributeValue]
+
+By Link TExt --> find_element_by_link_text
+
+By Partial Link text --> find_element_by_partial_link_text
+
+
+# The various visual elements or controls used on pages are known as "WebElements" in Selenium
+
+# Finding elements using ID, name, or class attributes is the most preferred and fastest way to find elements.
+
+/* Properties of WebDriver class */
+
+current_url --> This gets the URL of the current page displayed in the browser
+
+current_window_handle --> This gets the handle of the current window
+
+name --> This gets the name of the underlying browser for this instance
+
+orientation --> This gets the current orientation of the device
+
+page_source --> This gets the source of the current page
+
+title --> Title of the current page
+
+/* Methods of the WebDriver class */
+$ driver.back(), close(), forward(), get(url), refresh(), switch.to_alert(), switch_to_default_content(), switch_to.window(window_name)
+
+$ driver.set_page_load_timeout(30) --> This sets the amount of time to wait for a page load to complete.
+
+$ implicitly_wait(time_to_wait)  --> This sets a sticky timeout to implicitly wait for an element to be found, or a command to complete.
+
+$ element.size --> This gets the size of the element
+
+$ element.tag_name --> This gets this element's HTML tag name
+
+$ element.text --> This gets the text of the element
+
+$ element.clear() --> Clears the content of a textbox or text area element
+
+$ element.click() --> This clicks the element
+
+$ element.get_attribute("value") --> This gets the attribute value from the element.
+
+$ element.is_displayed(), is_enabled(), is_selected() --> This checks whether the element is visible to the user.
+
+$ element.send_keys("foo") --> This simulates typing the element.
+
+$ element.value_of_css_property("backgroundcolor") --> This gets the value of a CSS property.
+
+
+
+
+
+
+
+
+
+

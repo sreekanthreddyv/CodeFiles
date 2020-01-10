@@ -1,0 +1,8 @@
+man: [John Smith, Bill Jones]
+women:
+  - Mary Smith
+  - Susan Williams
+
+Emp One:
+  name: Alex
+  age: 27
