@@ -29,7 +29,7 @@ class SearchTest(unittest.TestCase):
 		# Create a new Ie session
 		# ie_driver_path = r'C:\Users\c_srev\Downloads\geckodriver-v0.26.0-win64\IEDriverServer.exe'
 		# cls.driver = webdriver.Ie(ie_driver_path)
-		chrome_driver_path = r"C:\Users\c_srev\Downloads\geckodriver-v0.26.0-win64\chromedriver.exe"
+		chrome_driver_path = r"E:\Python\myTemp\chromedriver.exe"
 		cls.driver = webdriver.Chrome(chrome_driver_path)
 		cls.driver.implicitly_wait(30)
 		# Navigate to the application home page
